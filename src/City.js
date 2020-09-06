@@ -30,13 +30,13 @@ export default function City() {
         <div className="temperature">
           <span className="temperature-number">{weatherData.temperature}</span>
           <span className="units">
-            <a href="#" id="celsius" className="active">
+            <button id="celsius" className="active link-button">
               ºC
-            </a>
+            </button>
             |
-            <a href="#" id="fahrenheit">
+            <button id="fahrenheit" className="link-button">
               ºF
-            </a>
+            </button>
           </span>
         </div>
       </div>
