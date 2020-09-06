@@ -1,13 +1,18 @@
 import React from "react";
 import "./App.css";
-import Search from "./Search";
+import SearchForm from "./SearchForm";
+import City from "./City";
+import Forecast from "./Forecast";
+import Foother from "./Footer";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Search />
-      </header>
+    <div className="container">
+      <SearchForm />
+      <City />
+      <Forecast />
+      <script src=" src/script.js"> </script>
+      <Foother />
     </div>
   );
 }

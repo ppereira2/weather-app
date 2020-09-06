@@ -3,7 +3,7 @@ import axios from "axios";
 
 const Search = () => {
   let [weather, setWeather] = useState({});
-  let [city, setCity] = useState("");
+  let [city, setCity] = useState("Lisboa");
   const handleResponse = (response) => {
     setWeather({
       temperature: Math.round(response.data.main.temp),
@@ -33,10 +33,10 @@ const Search = () => {
           placeholder="Search for a city..."
           onChange={updateCity}
         ></input>
-        <button type="submit"></button>
+        <button type="Submit">Search</button>
       </form>
       <ul>
-        <li>Humidity: {weather.humidity} %</li>
+        <li>Humidity: {weather.humidity}%</li>
         <li>Wind: {weather.speed} km/h</li>
         <li>{weather.description}</li>
         <li>{weather.temperature} ºC</li>
