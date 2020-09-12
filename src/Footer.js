@@ -1,11 +1,11 @@
 import React from "react";
 import "./App.css";
 
-export default function Footer() {
+const Footer = () => {
   return (
     <footer>
       <p class="name">
-        This project was coded by Patrícia Pereira and is
+        This project was coded by Patrícia Pereira and is{" "}
         <a
           class="source"
           target="_blank"
@@ -17,4 +17,5 @@ export default function Footer() {
       </p>
     </footer>
   );
-}
+};
+export default Footer;

@@ -1,19 +1,17 @@
 import React from "react";
 import "./App.css";
-import SearchForm from "./SearchForm";
-import City from "./City";
+import Weather from "./Weather";
 import Forecast from "./Forecast";
 import Footer from "./Footer";
 
-function App() {
+const App = () => {
   return (
     <div className="container">
-      <SearchForm />
-      <City />
+      <Weather />
       <Forecast />
       <Footer />
     </div>
   );
-}
+};
 
 export default App;
