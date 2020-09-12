@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import FormatDate from "./FormatDate";
+import WeatherData from "./WeatherData";
 
 const Weather = () => {
   let [weather, setWeather] = useState({ ready: false });
@@ -15,20 +15,46 @@ const Weather = () => {
       speed: Math.round(response.data.wind.speed),
       humidity: response.data.main.humidity,
       icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      city: response.data.name,
     });
+  };
+  const search = () => {
+    let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`;
+    axios.get(apiUrl).then(handleResponse);
+  };
+
+  const searchCurrentLocation = (position) => {
+    let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    search();
+  };
+
+  const updateCity = (event) => {
+    setCity(event.target.value);
+  };
+
+  const getLocation = (event) => {
+    event.preventDefault();
+    navigator.geolocation.getCurrentPosition(searchCurrentLocation);
   };
 
   if (weather.ready) {
     return (
       <div>
         <div className="form-row">
-          <form /*onSubmit={handleSubmit}*/ className="form-inline">
+          <form onSubmit={handleSubmit} className="form-inline">
             <input
               className="form-control mx-sm-3 mb-2"
               type="search"
               placeholder="Search for city..."
               aria-label="Search"
-              /*onChange={updateCity}*/
+              onChange={updateCity}
             />
             <button className="btn btn-outline-light mb-2 mr-3" type="submit">
               <svg
@@ -53,6 +79,7 @@ const Weather = () => {
               className="btn btn-outline-light mb-2"
               id="current-location"
               type="submit"
+              onClick={getLocation}
             >
               <svg
                 width="1.3em"
@@ -70,55 +97,11 @@ const Weather = () => {
             </button>
           </form>
         </div>
-        <div className="row">
-          <div className="col">
-            <h1 className="city"> {city} </h1>
-            <FormatDate date={weather.date} />
-            <ul>
-              <li>
-                Humidity: <span id="humidity">{weather.humidity} </span>%
-              </li>
-              <li>
-                Wind: <span id="wind"> {weather.speed} </span> km/h
-              </li>
-              <li>
-                <span id="description"> {weather.description} </span>
-              </li>
-            </ul>
-            <div className="temperature">
-              <span className="temperature-number">{weather.temperature}</span>
-              <span className="units">
-                <button id="celsius" className="active link-button">
-                  ºC
-                </button>
-                |
-                <button id="fahrenheit" className="link-button">
-                  ºF
-                </button>
-              </span>
-            </div>
-          </div>
-          <div className="col">
-            <img
-              className="day-icon"
-              alt={weather.description}
-              src={weather.icon}
-            />
-          </div>
-        </div>
+        <WeatherData data={weather} />
       </div>
     );
   } else {
-    /*const handleSubmit = (event) => {
-      event.preventDefault();*/
-    let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`;
-    axios.get(apiUrl).then(handleResponse);
-    /*};
-
-    const updateCity = (event) => {
-      setCity(event.target.value);
-    };*/
+    search();
     return "loading...";
   }
 };
