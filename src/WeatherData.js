@@ -1,5 +1,6 @@
 import React from "react";
 import FormatDate from "./FormatDate";
+import WeatherIcon from "./WeatherIcon";
 
 const WeatherData = (props) => {
   return (
@@ -32,10 +33,9 @@ const WeatherData = (props) => {
         </div>
       </div>
       <div className="col">
-        <img
-          className="day-icon"
-          alt={props.data.description}
-          src={props.data.icon}
+        <WeatherIcon
+          code={props.data.icon}
+          description={props.data.description}
         />
       </div>
     </div>

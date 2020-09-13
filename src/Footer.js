@@ -4,10 +4,10 @@ import "./App.css";
 const Footer = () => {
   return (
     <footer>
-      <p class="name">
+      <p className="name">
         This project was coded by Patrícia Pereira and is{" "}
         <a
-          class="source"
+          className="source"
           target="_blank"
           rel="noopener noreferrer"
           href="https://github.com/ppereira2/weather-app"

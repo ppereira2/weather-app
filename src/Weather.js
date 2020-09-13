@@ -6,7 +6,6 @@ const Weather = () => {
   let [weather, setWeather] = useState({ ready: false });
   let [city, setCity] = useState("Lisbon");
   const handleResponse = (response) => {
-    console.log(response.data);
     setWeather({
       ready: true,
       date: new Date(response.data.dt * 1000),
@@ -14,7 +13,7 @@ const Weather = () => {
       description: response.data.weather[0].description,
       speed: Math.round(response.data.wind.speed),
       humidity: response.data.main.humidity,
-      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      icon: response.data.weather[0].icon,
       city: response.data.name,
     });
   };
