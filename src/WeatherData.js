@@ -1,6 +1,7 @@
 import React from "react";
 import FormatDate from "./FormatDate";
 import WeatherIcon from "./WeatherIcon";
+import WeatherUnits from "./WeatherUnits";
 
 const WeatherData = (props) => {
   return (
@@ -19,18 +20,7 @@ const WeatherData = (props) => {
             <span id="description"> {props.data.description} </span>
           </li>
         </ul>
-        <div className="temperature">
-          <span className="temperature-number">{props.data.temperature}</span>
-          <span className="units">
-            <button id="celsius" className="active link-button">
-              ºC
-            </button>
-            |
-            <button id="fahrenheit" className="link-button">
-              ºF
-            </button>
-          </span>
-        </div>
+        <WeatherUnits temperature={props.data.temperature} />
       </div>
       <div className="col">
         <WeatherIcon

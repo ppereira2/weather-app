@@ -32,6 +32,11 @@ h1 {
   top: -34px;
 }
 
+#fahrenheit,
+#celsius {
+  margin: 4px;
+}
+
 .weekdays-icon {
   width: 50px;
   display: block;
@@ -104,19 +109,4 @@ ul {
 
 #date {
   font-size: 18px;
-}
-
-.link-button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  text-decoration: underline;
-  display: inline;
-  margin: 0;
-  padding: 0;
-}
-
-.link-button:hover,
-.link-button:focus {
-  text-decoration: none;
 }
