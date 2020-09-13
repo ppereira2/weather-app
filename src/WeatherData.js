@@ -24,6 +24,7 @@ const WeatherData = (props) => {
       </div>
       <div className="col">
         <WeatherIcon
+          name="weather"
           code={props.data.icon}
           description={props.data.description}
         />

@@ -35,7 +35,7 @@ const WeatherIcon = (props) => {
 
   return (
     <img
-      className="weather-icon"
+      className={`${props.name}-icon`}
       alt={props.description}
       src={`img/weather_icons_dovora_interactive/PNG/512/${getIconFromWeather()}`}
     />

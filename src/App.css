@@ -37,7 +37,7 @@ h1 {
   margin: 4px;
 }
 
-.weekdays-icon {
+.forecast-icon {
   width: 50px;
   display: block;
   margin: 0 auto;
@@ -50,7 +50,7 @@ h1 {
 
 .row,
 .form-row {
-  margin: 20px;
+  margin: 10px;
 }
 
 .form-row {
@@ -78,6 +78,10 @@ a:hover {
 
 a.source {
   font-weight: 500;
+}
+
+a.source:hover {
+  color: #f8cf06;
 }
 
 p.name {
@@ -109,4 +113,9 @@ ul {
 
 #date {
   font-size: 18px;
+}
+
+#min,
+#max {
+  padding: 3px;
 }

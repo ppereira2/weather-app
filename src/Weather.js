@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import WeatherData from "./WeatherData";
+import Forecast from "./Forecast";
 
 const Weather = () => {
   let [weather, setWeather] = useState({ ready: false });
@@ -18,13 +19,13 @@ const Weather = () => {
     });
   };
   const search = () => {
-    let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+    let apiKey = "1c9f5d317b6f1a9e6768efb4042554b7";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`;
     axios.get(apiUrl).then(handleResponse);
   };
 
   const searchCurrentLocation = (position) => {
-    let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+    let apiKey = "1c9f5d317b6f1a9e6768efb4042554b7";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
   };
@@ -97,11 +98,12 @@ const Weather = () => {
           </form>
         </div>
         <WeatherData data={weather} />
+        <Forecast data={weather} />
       </div>
     );
   } else {
     search();
-    return "loading...";
+    return <div class="spinner-border"></div>;
   }
 };
 
