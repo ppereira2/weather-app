@@ -29,7 +29,7 @@ const Forecast = (props) => {
     );
   } else {
     forecastWeather();
-    return <div class="spinner-border"></div>;
+    return <div className="spinner-border"></div>;
   }
 };
 
